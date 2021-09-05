@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d080b72-7667-46a0-a5d2-3dbbd659ac99" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../MasterServer/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MasterServer/src/main/resources/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MasterServer/src/main/java/com/test/log/masternode/ServletInitializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MasterServer/src/main/java/com/test/log/masternode/controller/LogServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MasterServer/src/main/java/com/test/log/masternode/controller/LogServerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MasterServer/src/main/java/com/test/log/masternode/service/LogHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MasterServer/src/main/java/com/test/log/masternode/service/LogServerHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MasterServer/src/main/java/com/test/log/masternode/service/LogHandlerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MasterServer/src/main/java/com/test/log/masternode/service/LogServerHandlerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

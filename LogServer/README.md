@@ -1,4 +1,7 @@
-# How to start
+# Log Server
+This is a server application to handle the request of the log search on it's log directory, and return the eligible log entries to the user.
+
+## How to start
 This is the server application to handle the client request to query the log.<br />
 For local testing:<br />
 1. go to the project directory <br />
@@ -14,10 +17,10 @@ For example: server.port=8081 <br />
 <br />
 Once you see "Your log server is up!" on the top, that means your log server is up and running<br />
 
-# API Spec
+## API Spec
 The server use the Restful API call to commnuicate with client. Here is the API Spec:<br />
 
-## Request Parameter
+### Request Parameter
 Method GET : http://hostname:port/log/query?fileName=[some name]&n=[some number]&keyWord=[some string] <br />
 This method is to query the log entry in a specific file, result set is reverse time ordered.
 - "fileName" is the mandatory parameter. User has to specify the log file name to search from.<br />
@@ -29,7 +32,7 @@ This method is to search the log entry by key word through out all the log files
 - "keyWord" is the mandatory parameter. That indicates searching by the keyWord. The result set will be filtered by the keyword search.<br />
 - "n" is optional parameter. Same as the other API I explained above.
 
-## Respond Body
+### Respond Body
 The API will return a json format string. Here are the following fields:<br />
 - "events" This object is a list of log entry, which includes the all the metadata of the log includes timestamp, thread, class name, level, and message text.
 - "error" This indicates the error thrown by the server. If the request going well, then this field will be empty. Here are all the possible errors:
@@ -37,7 +40,7 @@ The API will return a json format string. Here are the following fields:<br />
   - Wrong log format
   - Invalid input
 
-# Some catch out of the scope
+## Some catch out of the scope
 There are a few points I noticed which is not included in the requirement, but I think it's worth being added.
 1. I make this application highly configurable. There are some key parameters of the system I made it configurable in the application.properties. For example: the log directory, log regex pattern, timestamp format and etc. The benefit of it is user is able to use one code base to handle various scenarios. Any changes can be done directly through the properties file configuration, instead of making any code deployment.
 2. I make this application thread safe. This application can not only deal with the static unchanged log, but also can handle the dynamic log file. I tested with one process keep writting the same log file, when the client is querying the log. It can work concurrently. I also introduce one protection mechanism which is when the writing is much faster than the read. At that time log file will increase quite fast so the read will highly possible not able to finish. At that circumstance I will make the process stop after the log pass the timestamp when the request first came.

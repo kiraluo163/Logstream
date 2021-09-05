@@ -29,14 +29,14 @@ The API call have to give the machine host within this list, otherwise will thro
 ## API Spec
 The server use the Restful API call to commnuicate with client. Here is the API Spec:<br />
 
-## Request Parameter
+### Request Parameter
 Method GET : http://hostname:port/master/search?keyWord=[some string]&n=[some number]&machines=[list of machine] <br />
 This method is to query the log entry by keyword search into all log files by the specified remote server(s), result set is reverse time ordered.
 - "keyWord" is the mandatory parameter. That indicates searching by the keyWord. The result set will be filtered by the keyword search.<br />
 - "n" is optional parameter. That's correspondent to the number of the event user want to query. The default value is 10. To prevent the system from being overloaded, I introduced a maximum limit number which is 100. That means no more than 100 log entry to be returned. If user specify any number which is exceed the limit, API will return "Invalid Input" error.
 - "machines" is mandatory parameter. That indicates a list of machine user want to search the log from.
 
-## Respond Body
+### Respond Body
 The API will return a json format string. Here are the following fields:<br />
 - "events" This object is a list of log entry, which includes the all the metadata of the log includes timestamp, thread, class name, level, and message text.
 - "error" This indicates the error thrown by the server. If the request going well, then this field will be empty. Here are all the possible errors:

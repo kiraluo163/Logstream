@@ -16,12 +16,18 @@ Once you see "Your log server is up!" on the top, that means your log server is 
 
 # API Spec
 The server use the Restful API call to commnuicate with client. Here is the API Spec:<br />
-Method GET : http://hostname:port/log/query?fileName=[some name]&n=[some number]&keyWord=[some string] <br />
 
 ## Request Parameter
+Method GET : http://hostname:port/log/query?fileName=[some name]&n=[some number]&keyWord=[some string] <br />
+This method is to query the log entry in a specific file, result set is reverse time ordered.
 - "fileName" is the mandatory parameter. User has to specify the log file name to search from.<br />
 - "n" is optional parameter. That's correspondent to the number of the event user want to query. The default value is 10. To prevent the system from being overloaded, I introduced a maximum limit number which is 100. That means no more than 100 log entry to be returned. If user specify any number which is exceed the limit, API will return "Invalid Input" error.
 - "keyWord" is optional parameter. That indicates searching by the keyWord. The result set will be filtered by the keyword search.<br />
+
+Method GET : http://hostname:port/log/search?&n=[some number]&keyWord=[some string] <br />
+This method is to search the log entry by key word through out all the log files under the directory, result set is reverse time ordered.
+- "keyWord" is the mandatory parameter. That indicates searching by the keyWord. The result set will be filtered by the keyword search.<br />
+- "n" is optional parameter. Same as the other API I explained above.
 
 ## Respond Body
 The API will return a json format string. Here are the following fields:<br />

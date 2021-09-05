@@ -47,19 +47,12 @@ public class LogHandlerImpl implements LogHandler {
 
     private Pattern PatternFullLog;
 
-    //private Comparator<LogEntry> logEntryComparator;
-
-    //private SimpleDateFormat timeFormatter;
-
     @PostConstruct
     public void init(){
         PatternFullLog = Pattern.compile(fullPattern, Pattern.DOTALL);
 
 
     }
-
-
-
 
     class HelperTool{
         SimpleDateFormat timeFormatter;
@@ -171,7 +164,6 @@ public class LogHandlerImpl implements LogHandler {
         }
         return null;
     }
-
 
     public void setPatternFullLog(Pattern patternFullLog){this.PatternFullLog = patternFullLog;};
 

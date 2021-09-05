@@ -36,19 +36,10 @@ public class LogHandlerTest {
         String threadRgx = "\\[(?<thread>[^\\]]+)]";
         String textRgx = "(?<text>.*?)(?=\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d{3}|\\Z)";
         String fullPattern = timestampRgx + "\\s+"+threadRgx+"\\s+"+levelRgx+"\\s+"+classRgx+"-\\s+"+textRgx;
-        SimpleDateFormat timeFormatter = new SimpleDateFormat(timeFormat);
-        Comparator<LogEntry> logEntryComparator = Comparator.comparing(e -> {
-            try {
-                return timeFormatter.parse(e.getTimestamp());
-            } catch (ParseException ex) {
-                throw new RuntimeException(ex.getMessage());
-            }
-        });
         logHandler.setPatternFullLog(Pattern.compile(fullPattern));
-        logHandler.setTimeFormat(timeFormatter);
-        logHandler.setLogEntryComparator(logEntryComparator);
         logHandler.setTimestampRgx(timestampRgx);
         logHandler.setIsSafeMode(true);
+        logHandler.setTimeFormat(timeFormat);
 
     }
 

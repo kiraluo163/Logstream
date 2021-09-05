@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d080b72-7667-46a0-a5d2-3dbbd659ac99" name="Default Changelist" comment="" />
+    <list default="true" id="6d080b72-7667-46a0-a5d2-3dbbd659ac99" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../LogServer/var/log/LogFile2.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogServer/src/main/java/com/test/log/logserver/service/LogHandlerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LogServer/src/main/java/com/test/log/logserver/service/LogHandlerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogServer/src/test/java/com/test/log/logserver/LogHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LogServer/src/test/java/com/test/log/logserver/LogHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogServer/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../LogServer/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

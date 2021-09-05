@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6d080b72-7667-46a0-a5d2-3dbbd659ac99" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../LogServer/.mvn/wrapper/wrapper.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MasterServer/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MasterServer/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MasterServer/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MasterServer/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MasterServer/lib/common-utils-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MasterServer/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MasterServer/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MasterServer/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MasterServer/src/main/java/com/test/log/masternode/MasterNodeApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MasterServer/src/main/java/com/test/log/masternode/controller/LogServerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MasterServer/src/main/java/com/test/log/masternode/service/LogHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MasterServer/src/main/java/com/test/log/masternode/service/LogHandlerImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MasterServer/src/main/java/com/test/log/masternode/service/ValidationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MasterServer/src/main/java/com/test/log/masternode/service/ValidationServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MasterServer/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MasterServer/src/test/java/com/test/log/masternode/MasterNodeApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common-utils.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/jluo/common/Constants.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/jluo/common/LogEntry.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/jluo/common/ResponseDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/common-utils-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogServer/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../LogServer/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogServer/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../LogServer/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogServer/logserver.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../LogServer/logserver.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogServer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../LogServer/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogServer/src/main/java/com/test/log/logserver/ServletInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MasterServer/src/main/java/com/test/log/masternode/ServletInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogServer/src/main/java/com/test/log/logserver/cache/CacheConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LogServer/src/main/java/com/test/log/logserver/cache/CacheConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogServer/src/main/java/com/test/log/logserver/controller/LogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LogServer/src/main/java/com/test/log/logserver/controller/LogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogServer/src/main/java/com/test/log/logserver/domain/LogEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jluo/common/LogEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogServer/src/main/java/com/test/log/logserver/domain/ResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jluo/common/ResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogServer/src/main/java/com/test/log/logserver/service/LogHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LogServer/src/main/java/com/test/log/logserver/service/LogHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogServer/src/main/java/com/test/log/logserver/service/LogHandlerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LogServer/src/main/java/com/test/log/logserver/service/LogHandlerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogServer/src/main/java/com/test/log/logserver/service/ValidationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LogServer/src/main/java/com/test/log/logserver/service/ValidationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogServer/src/main/java/com/test/log/logserver/utils/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/jluo/common/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogServer/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../LogServer/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogServer/src/test/java/com/test/log/logserver/LogHandlerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LogServer/src/test/java/com/test/log/logserver/LogHandlerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogServer/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../LogServer/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogServer/target/logstream-0.0.1-SNAPSHOT/WEB-INF/classes/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogServer/target/logstream-0.0.1-SNAPSHOT/WEB-INF/classes/static/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogServer/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../LogServer/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogServer/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../LogServer/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogServer/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../LogServer/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogServer/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../LogServer/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogServer/target/surefire-reports/TEST-com.test.log.logstream.LogHandlerTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogServer/target/surefire-reports/com.test.log.logstream.LogHandlerTest.txt" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1xhrw6C1DF1z2zWkWgGUf4ntLtZ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.jluo.common" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6d080b72-7667-46a0-a5d2-3dbbd659ac99" name="Default Changelist" comment="" />
+      <created>1630818398313</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1630818398313</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>

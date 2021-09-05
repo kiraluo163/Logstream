@@ -1,12 +1,18 @@
-package com.test.log.logserver.domain;
+package org.jluo.common;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
 public class ResponseDto {
-
+    @JsonProperty("events")
     private List<LogEntry> events;
+    @JsonProperty("error")
     private String error;
 
+    public ResponseDto(){
+
+    }
     public ResponseDto(String error){
         this.error = error;
     }

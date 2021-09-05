@@ -1,9 +1,9 @@
 package com.test.log.logserver.controller;
 
-import com.test.log.logserver.domain.LogEntry;
-import com.test.log.logserver.domain.ResponseDto;
 import com.test.log.logserver.service.LogHandler;
 import com.test.log.logserver.service.ValidationService;
+import org.jluo.common.LogEntry;
+import org.jluo.common.ResponseDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -47,6 +47,27 @@ public class LogController {
         List<LogEntry> logs;
         try{
             logs = logHandler.tail(new File(logDirectory + "/" + fileName), n, keyWord);
+
+        }catch (FileNotFoundException ex){
+            logger.error(ex.getMessage());
+            return ResponseDto.fileNotFoundError();
+        }catch (ParseException ex){
+            logger.error(ex.getMessage());
+            return ResponseDto.logFormatError();
+        }
+        return new ResponseDto(logs);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value="/search")
+    public ResponseDto searchLog(@RequestParam String keyWord, @RequestParam Optional<Integer> n){
+        logger.info("logDirectory = " + logDirectory);
+
+        if(n.isPresent() && !validationService.verifyEventNumber(n.get())){
+            return ResponseDto.invalidInputError();
+        }
+        List<LogEntry> logs;
+        try{
+            logs = logHandler.search(keyWord, n);
         }catch (FileNotFoundException ex){
             logger.error(ex.getMessage());
             return ResponseDto.fileNotFoundError();

@@ -1,7 +1,7 @@
 package com.test.log.logserver.service;
 
 import org.springframework.stereotype.Service;
-import static com.test.log.logserver.utils.Constants.MAXIMUM_NUM_OF_EVENTS;
+import static org.jluo.common.Constants.MAXIMUM_NUM_OF_EVENTS;
 
 @Service
 public class ValidationServiceImpl implements ValidationService {

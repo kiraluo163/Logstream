@@ -22,7 +22,7 @@ public class CacheConfig {
     }
 
     @CacheEvict(allEntries = true, value = {LOG})
-    @Scheduled(fixedDelay = 10 * 60 * 1000 ,  initialDelay = 500)
+    @Scheduled(fixedDelayString = "${cache.expired.time}" ,  initialDelay = 500)
     public void reportCacheEvict() {
         System.out.println("Flush Cache !");
     }

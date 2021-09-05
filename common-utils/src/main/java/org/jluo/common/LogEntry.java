@@ -1,7 +1,9 @@
-package com.test.log.logserver.domain;
+package org.jluo.common;
 
-public class LogEntry{
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class LogEntry {
     private String timestamp;
     private String level;
     private String threadName;
@@ -59,4 +61,8 @@ public class LogEntry{
         this.message = message;
     }
 
+    @Override
+    public String toString(){
+        return "timestamp: " + timestamp + " level: " + level + " threadName: " + threadName;
+    }
 }

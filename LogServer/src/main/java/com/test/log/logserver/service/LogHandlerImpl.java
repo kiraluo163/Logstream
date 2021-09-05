@@ -1,6 +1,6 @@
 package com.test.log.logserver.service;
 
-import com.test.log.logserver.domain.LogEntry;
+import org.jluo.common.LogEntry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,13 +10,14 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FilenameFilter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static com.test.log.logserver.utils.Constants.DEFAULT_NUM_OF_EVENTS;
+import static org.jluo.common.Constants.DEFAULT_NUM_OF_EVENTS;
 
 @Service
 public class LogHandlerImpl implements LogHandler {
@@ -36,6 +37,8 @@ public class LogHandlerImpl implements LogHandler {
     private String timeFormat;
     @Value("${log.regex.pattern.full}")
     private String fullPattern;
+    @Value("${log.dir}")
+    private String logDirectory;
 
     @Value("${app.safemode}")
     private Boolean isSafeMode;
@@ -58,6 +61,8 @@ public class LogHandlerImpl implements LogHandler {
             }
         });
     }
+
+
 
 
 
@@ -88,6 +93,23 @@ public class LogHandlerImpl implements LogHandler {
             }
         }
         scan.close();
+        List<LogEntry> res = new LinkedList<>();
+        while(!Q.isEmpty()) res.add(0, Q.poll());
+        return res;
+    }
+
+    @Override
+    public List<LogEntry> search(String keyWord, Optional<Integer> n) throws FileNotFoundException, ParseException {
+        File f = new File(logDirectory);
+        FilenameFilter filter = (f1, name) -> name.contains("log");
+        PriorityQueue<LogEntry> Q = new PriorityQueue<>(logEntryComparator);
+        int maxCap = n.isPresent() ? n.get() : DEFAULT_NUM_OF_EVENTS;
+        for (File logFile : f.listFiles(filter)) {
+            Q.addAll(tail(logFile, n, Optional.of(keyWord)));
+            while(Q.size() > maxCap){
+                Q.poll();
+            }
+        }
         List<LogEntry> res = new LinkedList<>();
         while(!Q.isEmpty()) res.add(0, Q.poll());
         return res;

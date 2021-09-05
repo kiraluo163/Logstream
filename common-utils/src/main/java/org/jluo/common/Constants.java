@@ -1,4 +1,4 @@
-package com.test.log.logserver.utils;
+package org.jluo.common;
 
 public class Constants {
     public static final int DEFAULT_NUM_OF_EVENTS = 10;

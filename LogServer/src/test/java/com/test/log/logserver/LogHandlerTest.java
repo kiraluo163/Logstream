@@ -1,8 +1,8 @@
 package com.test.log.logserver;
 
 
-import com.test.log.logserver.domain.LogEntry;
 import com.test.log.logserver.service.LogHandlerImpl;
+import org.jluo.common.LogEntry;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

@@ -5,7 +5,6 @@ import org.jluo.common.ResponseDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -18,8 +17,8 @@ import java.util.*;
 import static org.jluo.common.Constants.DEFAULT_NUM_OF_EVENTS;
 
 @Service
-public class LogHandlerImpl implements LogHandler{
-    private static Logger logger = LoggerFactory.getLogger(LogHandlerImpl.class);
+public class LogServerHandlerImpl implements LogServerHandler {
+    private static Logger logger = LoggerFactory.getLogger(LogServerHandlerImpl.class);
 
     @Value("${log.regex.timestamp}")
     private String timestampRgx;

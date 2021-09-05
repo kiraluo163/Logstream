@@ -6,7 +6,7 @@ import org.jluo.common.LogEntry;
 import java.util.List;
 import java.util.Optional;
 
-public interface LogHandler {
+public interface LogServerHandler {
 
     List<LogEntry> searchLog(String keyWord, List<String> machines, Optional<Integer> n);
 }

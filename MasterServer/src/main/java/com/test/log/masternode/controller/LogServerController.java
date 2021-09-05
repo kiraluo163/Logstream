@@ -1,6 +1,6 @@
 package com.test.log.masternode.controller;
 
-import com.test.log.masternode.service.LogHandler;
+import com.test.log.masternode.service.LogServerHandler;
 import com.test.log.masternode.service.ValidationService;
 import org.jluo.common.LogEntry;
 import org.jluo.common.ResponseDto;
@@ -18,7 +18,7 @@ public class LogServerController {
     private ValidationService validationService;
 
     @Resource
-    private LogHandler logHandler;
+    private LogServerHandler logServerHandler;
 
     @RequestMapping(method = RequestMethod.GET, value="/search")
     public ResponseDto searchLog(@RequestParam String keyWord, @RequestParam List<String> machines, @RequestParam Optional<Integer> n){
@@ -28,7 +28,7 @@ public class LogServerController {
         if(!validationService.verifyMachine(machines)){
             return ResponseDto.invalidInputError();
         }
-        List<LogEntry> logs = logHandler.searchLog(keyWord, machines,n);
+        List<LogEntry> logs = logServerHandler.searchLog(keyWord, machines,n);
         return new ResponseDto(logs);
     }
 

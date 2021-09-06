@@ -105,7 +105,6 @@ public class LogHandlerImpl implements LogHandler {
         scan.close();
         List<LogEntry> res = new LinkedList<>();
         while(!Q.isEmpty()) res.add(0, Q.poll());
-        System.out.println("res size= " +res.size());
         return res;
     }
 
@@ -126,24 +125,13 @@ public class LogHandlerImpl implements LogHandler {
         }
         for(Future<List<LogEntry>> future : futures){
             try {
-                Q.addAll(future.get());
+                synchronized (Q){
+                    Q.addAll(future.get());
+                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ExecutionException e) {
                 e.printStackTrace();
-            }
-        }
-        //wait until all the thread is done.
-        while(true){
-            boolean isDone = true;
-            for(Future<List<LogEntry>> future : futures){
-                if(!future.isDone()){
-                    isDone = false;
-                    break;
-                }
-            }
-            if(isDone){
-                break;
             }
         }
         List<LogEntry> res = new LinkedList<>();

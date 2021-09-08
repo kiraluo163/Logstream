@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 import java.util.Optional;
@@ -49,7 +50,7 @@ public class LogController {
         try{
             logs = logHandler.tail(new File(logDirectory + "/" + fileName), n, keyWord);
 
-        }catch (FileNotFoundException ex){
+        }catch (IOException ex){
             logger.error(ex.getMessage());
             return RawLogDto.fileNotFoundError();
         }

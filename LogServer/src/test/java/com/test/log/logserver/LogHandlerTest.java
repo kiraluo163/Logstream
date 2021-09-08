@@ -13,6 +13,7 @@ import org.springframework.util.ResourceUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Comparator;
@@ -44,7 +45,7 @@ public class LogHandlerTest {
     }
 
     @Test
-    public void testTail_returnSize() throws FileNotFoundException, ParseException {
+    public void testTail_returnSize() throws IOException {
         File logFile = ResourceUtils.getFile("classpath:data/testLog.log");
         Assert.assertEquals(10, logHandler.tail(logFile, Optional.of(10), Optional.empty()).size());
         Assert.assertEquals(4, logHandler.tail(logFile, Optional.of(4), Optional.empty()).size());
@@ -52,7 +53,7 @@ public class LogHandlerTest {
     }
 
     @Test
-    public void testTail_futureTime() throws FileNotFoundException, ParseException {
+    public void testTail_futureTime() throws IOException {
         File logFile = ResourceUtils.getFile("classpath:data/testLog_futureTime.log");
         Assert.assertEquals(2, logHandler.tail(logFile, Optional.of(10), Optional.empty()).size());
     }

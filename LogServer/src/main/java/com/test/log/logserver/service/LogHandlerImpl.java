@@ -1,5 +1,6 @@
 package com.test.log.logserver.service;
 
+import org.apache.commons.io.input.ReversedLinesFileReader;
 import org.jluo.common.LogEntry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,9 +9,8 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FilenameFilter;
+import java.io.*;
+import java.nio.charset.Charset;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -78,22 +78,15 @@ public class LogHandlerImpl implements LogHandler {
 
     //@Cacheable("Log")
     @Override
-    public List<String> tail(File logFile, Optional<Integer> n, Optional<String> keyWord) throws FileNotFoundException {
-        Scanner scan = new Scanner(logFile);
+    public List<String> tail(File logFile, Optional<Integer> n, Optional<String> keyWord) throws IOException {
         Deque<String> Q = new LinkedList<>();
-        //Pattern pattern = Pattern.compile(timestampRgx);
-        //Date currentTime = new Date(System.currentTimeMillis());
         int maxCap = n.isPresent() ? n.get() : DEFAULT_NUM_OF_EVENTS;
-       // Matcher matcher;
-        while(scan.hasNextLine()) {
-            String line = scan.nextLine();
-            if (keyWord.isPresent() && !line.contains(keyWord.get())) continue;
-            Q.addFirst(line);
-            if (Q.size() > maxCap) {
-                Q.pollLast();
-            }
+        ReversedLinesFileReader object  = new ReversedLinesFileReader(logFile, Charset.defaultCharset());
+        if(object == null) new FileNotFoundException("File Not Found!");
+        String line ;
+        while((line = object.readLine()) != null && !line.isEmpty() && Q.size() < maxCap) {
+            Q.add(object.readLine());
         }
-        scan.close();
         return new LinkedList<>(Q);
     }
 

@@ -1,5 +1,6 @@
 package com.test.log.logserver.service;
 
+import com.test.log.logserver.utils.ReversedLineInputStream;
 import org.apache.commons.io.input.ReversedLinesFileReader;
 import org.jluo.common.LogEntry;
 import org.slf4j.Logger;
@@ -81,11 +82,10 @@ public class LogHandlerImpl implements LogHandler {
     public List<String> tail(File logFile, Optional<Integer> n, Optional<String> keyWord) throws IOException {
         Deque<String> Q = new LinkedList<>();
         int maxCap = n.isPresent() ? n.get() : DEFAULT_NUM_OF_EVENTS;
-        ReversedLinesFileReader object  = new ReversedLinesFileReader(logFile, Charset.defaultCharset());
-        if(object == null) new FileNotFoundException("File Not Found!");
-        String line ;
-        while((line = object.readLine()) != null && !line.isEmpty() && Q.size() < maxCap) {
-            Q.add(object.readLine());
+        BufferedReader in = new BufferedReader (new InputStreamReader (new ReversedLineInputStream(logFile)));
+        String line;
+        while((line = in.readLine()) != null && Q.size() < maxCap) {
+            Q.add(line);
         }
         return new LinkedList<>(Q);
     }

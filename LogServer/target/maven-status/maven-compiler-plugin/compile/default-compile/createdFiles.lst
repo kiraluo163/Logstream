@@ -3,6 +3,7 @@ com\test\log\logserver\controller\LogController.class
 com\test\log\logserver\LogStreamApplication.class
 com\test\log\logserver\service\ValidationService.class
 com\test\log\logserver\service\LogHandler.class
+com\test\log\logserver\utils\ReversedLineInputStream.class
 com\test\log\logserver\service\ValidationServiceImpl.class
 com\test\log\logserver\service\LogHandlerImpl$HelperTool.class
 com\test\log\logserver\cache\CacheConfig.class

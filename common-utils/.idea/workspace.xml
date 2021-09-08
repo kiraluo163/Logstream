@@ -5,7 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d080b72-7667-46a0-a5d2-3dbbd659ac99" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../LogServer/var/log/test.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/jluo/common/RawLogDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/jluo/common/RawLogDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogServer/lib/common-utils-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../LogServer/lib/common-utils-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogServer/src/main/java/com/test/log/logserver/controller/LogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LogServer/src/main/java/com/test/log/logserver/controller/LogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogServer/src/main/java/com/test/log/logserver/service/LogHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LogServer/src/main/java/com/test/log/logserver/service/LogHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogServer/src/main/java/com/test/log/logserver/service/LogHandlerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LogServer/src/main/java/com/test/log/logserver/service/LogHandlerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogServer/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../LogServer/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogServer/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../LogServer/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MasterServer/lib/common-utils-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../MasterServer/lib/common-utils-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MasterServer/src/main/java/com/test/log/masternode/controller/LogServerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MasterServer/src/main/java/com/test/log/masternode/controller/LogServerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MasterServer/src/main/java/com/test/log/masternode/service/LogServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MasterServer/src/main/java/com/test/log/masternode/service/LogServerHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MasterServer/src/main/java/com/test/log/masternode/service/LogServerHandlerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MasterServer/src/main/java/com/test/log/masternode/service/LogServerHandlerImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/common-utils-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/common-utils-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -56,8 +56,8 @@ public class LogHandlerImpl implements LogHandler {
 
     class HelperTool{
         SimpleDateFormat timeFormatter;
-        Comparator<LogEntry> logEntryComparator;
-        HelperTool(SimpleDateFormat timeFormatter, Comparator<LogEntry> logEntryComparator){
+        Comparator<String> logEntryComparator;
+        HelperTool(SimpleDateFormat timeFormatter, Comparator<String> logEntryComparator){
             this.timeFormatter = timeFormatter;
             this.logEntryComparator = logEntryComparator;
         }
@@ -65,9 +65,10 @@ public class LogHandlerImpl implements LogHandler {
 
     private HelperTool createHelperTool(){
         SimpleDateFormat timeFormatter = new SimpleDateFormat(timeFormat);
-        Comparator<LogEntry> logEntryComparator = Comparator.comparing(e -> {
+        Comparator<String> logEntryComparator = Comparator.comparing(e -> {
             try {
-                return timeFormatter.parse(e.getTimestamp());
+                //Fetch the timestamp string, assume the log format always start from 23 characters time string
+                return timeFormatter.parse(e.substring(0,23));
             } catch (ParseException ex) {
                 throw new RuntimeException(ex.getMessage());
             }
@@ -75,58 +76,45 @@ public class LogHandlerImpl implements LogHandler {
         return new HelperTool(timeFormatter, logEntryComparator);
     }
 
-    @Cacheable("Log")
+    //@Cacheable("Log")
     @Override
-    public List<LogEntry> tail(File logFile, Optional<Integer> n, Optional<String> keyWord) throws ParseException, FileNotFoundException {
-
-        HelperTool tool = createHelperTool();
+    public List<String> tail(File logFile, Optional<Integer> n, Optional<String> keyWord) throws FileNotFoundException {
         Scanner scan = new Scanner(logFile);
-        PriorityQueue<LogEntry> Q = new PriorityQueue<>(tool.logEntryComparator);
-        Pattern pattern = Pattern.compile(timestampRgx);
-        Date currentTime = new Date(System.currentTimeMillis());
+        Deque<String> Q = new LinkedList<>();
+        //Pattern pattern = Pattern.compile(timestampRgx);
+        //Date currentTime = new Date(System.currentTimeMillis());
         int maxCap = n.isPresent() ? n.get() : DEFAULT_NUM_OF_EVENTS;
-        Matcher matcher;
-        while(scan.hasNextLine()){
+       // Matcher matcher;
+        while(scan.hasNextLine()) {
             String line = scan.nextLine();
-            if(keyWord.isPresent() && !line.contains(keyWord.get())) continue;
-            matcher = pattern.matcher(line);
-            if(matcher.lookingAt()){
-                Date logTime = tool.timeFormatter.parse(matcher.group("timestamp"));
-                //This is to prevent the thread keep running when log file increased too much faster.
-                if(isSafeMode && logTime.after(currentTime)) break;
-
-                LogEntry log = parseSingleLog(line);
-                if(log != null) Q.add(log);
-                if(Q.size() > maxCap && tool.logEntryComparator.compare(log, Q.peek()) > 0){
-                    Q.poll();
-                }
+            if (keyWord.isPresent() && !line.contains(keyWord.get())) continue;
+            Q.addFirst(line);
+            if (Q.size() > maxCap) {
+                Q.pollLast();
             }
         }
         scan.close();
-        List<LogEntry> res = new LinkedList<>();
-        while(!Q.isEmpty()) res.add(0, Q.poll());
-        return res;
+        return new LinkedList<>(Q);
     }
 
     @Override
-    public List<LogEntry> search(String keyWord, Optional<Integer> n) throws FileNotFoundException, ParseException {
+    public List<String> search(String keyWord, Optional<Integer> n) throws FileNotFoundException {
         File f = new File(logDirectory);
-        HelperTool tool = createHelperTool();
-        FilenameFilter filter = (f1, name) -> name.contains("log");
-        PriorityQueue<LogEntry> Q = new PriorityQueue<>(tool.logEntryComparator);
-        int maxCap = n.isPresent() ? n.get() : DEFAULT_NUM_OF_EVENTS;
 
+        FilenameFilter filter = (f1, name) -> name.contains("log");
+        int maxCap = n.isPresent() ? n.get() : DEFAULT_NUM_OF_EVENTS;
+        List<String> ls = new ArrayList<>();
         //create thread pool to facilitate the multithreading in order to boost the performance.
-        List<Future<List<LogEntry>>> futures = new LinkedList<>();
+        List<Future<List<String>>> futures = new LinkedList<>();
         for (File logFile : f.listFiles(filter)) {
-            Callable<List<LogEntry>> task = () -> tail(logFile, n, Optional.of(keyWord));
+            Callable<List<String>> task = () -> tail(logFile, n, Optional.of(keyWord));
             futures.add(executor.submit(task));
 
         }
-        for(Future<List<LogEntry>> future : futures){
+        for(Future<List<String>> future : futures){
             try {
-                synchronized (Q){
-                    Q.addAll(future.get());
+                synchronized (ls){
+                    ls.addAll(future.get());
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -134,10 +122,13 @@ public class LogHandlerImpl implements LogHandler {
                 e.printStackTrace();
             }
         }
-        List<LogEntry> res = new LinkedList<>();
-        while(Q.size() > maxCap) Q.poll();
-        while(!Q.isEmpty()) res.add(0, Q.poll());
-        return res;
+        HelperTool tool = createHelperTool();
+        Collections.sort(ls, tool.logEntryComparator);
+        List<String> sorted = new ArrayList<>();
+        for(int i=ls.size()-1; i>=0 && sorted.size() < maxCap; i--){
+            sorted.add(ls.get(i));
+        }
+        return sorted;
     }
 
     private LogEntry parseSingleLog(String line){

@@ -8,5 +8,5 @@ import java.util.Optional;
 
 public interface LogServerHandler {
 
-    List<LogEntry> searchLog(String keyWord, List<String> machines, Optional<Integer> n);
+    List<String> searchLog(String keyWord, List<String> machines, Optional<Integer> n);
 }

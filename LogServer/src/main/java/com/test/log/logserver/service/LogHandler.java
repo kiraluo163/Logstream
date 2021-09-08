@@ -13,7 +13,7 @@ public interface LogHandler {
 
 
     /*Like the tail command in linux. Return last n log entry order by timestamp*/
-    List<LogEntry> tail(File logFile, Optional<Integer> n, Optional<String> keyWord) throws ParseException, FileNotFoundException;
+    List<String> tail(File logFile, Optional<Integer> n, Optional<String> keyWord) throws FileNotFoundException;
 
-    List<LogEntry> search(String keyWord, Optional<Integer> n) throws FileNotFoundException, ParseException;
+    List<String> search(String keyWord, Optional<Integer> n) throws FileNotFoundException;
 }

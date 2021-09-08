@@ -1,6 +1,7 @@
 package com.test.log.masternode.service;
 
 import org.jluo.common.LogEntry;
+import org.jluo.common.RawLogDto;
 import org.jluo.common.ResponseDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +26,7 @@ public class LogServerHandlerImpl implements LogServerHandler {
     @Value("${log.time.format}")
     private String timeFormat;
 
-    private Comparator<LogEntry> logEntryComparator;
+    private Comparator<String> logEntryComparator;
 
     private SimpleDateFormat timeFormatter;
 
@@ -34,7 +35,7 @@ public class LogServerHandlerImpl implements LogServerHandler {
         timeFormatter = new SimpleDateFormat(timeFormat);
         logEntryComparator = Comparator.comparing(e -> {
             try {
-                return timeFormatter.parse(e.getTimestamp());
+                return timeFormatter.parse(e.substring(0,23));
             } catch (ParseException ex) {
                 throw new RuntimeException(ex.getMessage());
             }
@@ -42,9 +43,9 @@ public class LogServerHandlerImpl implements LogServerHandler {
     }
 
     @Override
-    public List<LogEntry> searchLog(String keyWord, List<String> machines, Optional<Integer> n) {
+    public List<String> searchLog(String keyWord, List<String> machines, Optional<Integer> n) {
         RestTemplate restTemplate = new RestTemplate();
-        PriorityQueue<LogEntry> Q = new PriorityQueue<>(logEntryComparator);
+        List<String> ls = new ArrayList<>();
         int maxCap = n.isPresent() ? n.get() : DEFAULT_NUM_OF_EVENTS;
         for(String machine : machines){
             String resourceUrl = "http://" + machine + "/log/search?keyWord="+keyWord;
@@ -52,15 +53,15 @@ public class LogServerHandlerImpl implements LogServerHandler {
                 resourceUrl += "&n="+n.get();
             }
             logger.info("remote rpc call: GET - " + resourceUrl);
-            ResponseEntity<ResponseDto> entity = restTemplate.getForEntity(resourceUrl, ResponseDto.class );
-            ResponseDto response = entity.getBody();
-            if(response.getEvents() != null) Q.addAll(response.getEvents());
-            while(Q.size() > maxCap) {
-                Q.poll();
-            }
+            ResponseEntity<RawLogDto> entity = restTemplate.getForEntity(resourceUrl, RawLogDto.class );
+            RawLogDto response = entity.getBody();
+            if(response.getEvents() != null) ls.addAll(response.getEvents());
         }
-        List<LogEntry> res = new LinkedList<>();
-        while(!Q.isEmpty()) res.add(0, Q.poll());
-        return res;
+        Collections.sort(ls, logEntryComparator);
+        List<String> sorted = new ArrayList<>();
+        for(int i=ls.size()-1; i>=0&&sorted.size()<maxCap; i--){
+            sorted.add(ls.get(i));
+        }
+        return sorted;
     }
 }

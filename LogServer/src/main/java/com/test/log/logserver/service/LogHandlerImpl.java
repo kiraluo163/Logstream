@@ -85,7 +85,7 @@ public class LogHandlerImpl implements LogHandler {
         BufferedReader in = new BufferedReader (new InputStreamReader (new ReversedLineInputStream(logFile)));
         String line;
         while((line = in.readLine()) != null && Q.size() < maxCap) {
-            Q.add(line);
+            if(!keyWord.isPresent() || line.contains(keyWord.get())) Q.add(line);
         }
         return new LinkedList<>(Q);
     }
